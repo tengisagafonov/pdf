@@ -28,7 +28,7 @@ const DrawerReader = (props: IDrawerReader) => {
             pageNumber + 1 >= numPages ? numPages : pageNumber + 1,
         );
 
-    function handlePrint(event: any) {
+    function handlePrint(event: React.MouseEvent<HTMLElement>) {
         event.preventDefault()
         printJS(link)
     }
