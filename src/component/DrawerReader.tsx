@@ -18,6 +18,7 @@ const DrawerReader = (props: IDrawerReader) => {
 
     function onDocumentLoadSuccess({ numPages }: {numPages: number}) {
         setNumPages(numPages);
+        setPageNumber(1);
     }
 
     const goToPrevPage = () =>
@@ -34,7 +35,7 @@ const DrawerReader = (props: IDrawerReader) => {
     }
 
     const errorHandler = () => {
-        setNumPages(1);
+        setNumPages(0);
         setPageNumber(1);
     }
 
@@ -43,7 +44,7 @@ const DrawerReader = (props: IDrawerReader) => {
         <nav>
             <Space>
                 <Button onClick={goToPrevPage}>Prev</Button>
-                <div>{pageNumber}</div>
+                <div>{pageNumber} / {numPages}</div>
                 <Button onClick={goToNextPage} >Next</Button>
                 <Button onClick={handlePrint} >print</Button>
             </Space>
