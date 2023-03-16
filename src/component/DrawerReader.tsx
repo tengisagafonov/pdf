@@ -38,18 +38,14 @@ const DrawerReader = (props: IDrawerReader) => {
         <nav>
         <Space>
             <Button onClick={goToPrevPage}>Prev</Button>
-        <div>{pageNumber}</div>
-        <Button onClick={goToNextPage} >Next</Button>
-        <Button onClick={handlePrint} >print</Button>
+            <div>{pageNumber}</div>
+            <Button onClick={goToNextPage} >Next</Button>
+            <Button onClick={handlePrint} >print</Button>
         </Space>
         </nav>
-        <Document
-    file={link}
-    onLoadError={console.error}
-    onLoadSuccess={onDocumentLoadSuccess}
-    >
-    <Page pageNumber={pageNumber} />
-    </Document>
+        <Document file={link} onLoadError={console.error} onLoadSuccess={onDocumentLoadSuccess}>
+            <Page pageNumber={pageNumber} />
+        </Document>
     </Drawer>
     )
 }
