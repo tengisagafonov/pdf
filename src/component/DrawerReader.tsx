@@ -13,10 +13,10 @@ interface IDrawerReader {
 const DrawerReader = (props: IDrawerReader) => {
     const {link, onClose, open} = props;
 
-    const [numPages, setNumPages] = useState(0);
-    const [pageNumber, setPageNumber] = useState(1);
+    const [numPages, setNumPages] = useState<number>(0);
+    const [pageNumber, setPageNumber] = useState<number>(1);
 
-    function onDocumentLoadSuccess({ numPages }: any) {
+    function onDocumentLoadSuccess({ numPages }: {numPages: number}) {
         setNumPages(numPages);
     }
 
@@ -33,6 +33,11 @@ const DrawerReader = (props: IDrawerReader) => {
         printJS(link)
     }
 
+    const errorHandler = () => {
+        setNumPages(1);
+        setPageNumber(1);
+    }
+
     return (
     <Drawer title="PDF Viewer" placement="right" width={'100%'} onClose={onClose} open={open}>
         <nav>
@@ -43,7 +48,7 @@ const DrawerReader = (props: IDrawerReader) => {
             <Button onClick={handlePrint} >print</Button>
         </Space>
         </nav>
-        <Document file={link} onLoadError={console.error} onLoadSuccess={onDocumentLoadSuccess}>
+        <Document file={link} onLoadError={errorHandler} onLoadSuccess={onDocumentLoadSuccess}>
             <Page pageNumber={pageNumber} />
         </Document>
     </Drawer>
