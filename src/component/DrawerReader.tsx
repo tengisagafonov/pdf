@@ -41,12 +41,12 @@ const DrawerReader = (props: IDrawerReader) => {
     return (
     <Drawer title="PDF Viewer" placement="right" width={'100%'} onClose={onClose} open={open}>
         <nav>
-        <Space>
-            <Button onClick={goToPrevPage}>Prev</Button>
-            <div>{pageNumber}</div>
-            <Button onClick={goToNextPage} >Next</Button>
-            <Button onClick={handlePrint} >print</Button>
-        </Space>
+            <Space>
+                <Button onClick={goToPrevPage}>Prev</Button>
+                <div>{pageNumber}</div>
+                <Button onClick={goToNextPage} >Next</Button>
+                <Button onClick={handlePrint} >print</Button>
+            </Space>
         </nav>
         <Document file={link} onLoadError={errorHandler} onLoadSuccess={onDocumentLoadSuccess}>
             <Page pageNumber={pageNumber} />
